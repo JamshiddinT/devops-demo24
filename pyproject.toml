@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "devops-demo-service"
+version = "0.0.1"
+description = "DevOPS demo service"
+authors = ["Vitaliy Krasnov <krasnov.v.i@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.2"
+invoke = "^2.2.0"
+psycopg2-binary = "^2.9.9"
+tomli = "^2.0.1"
+djangorestframework = "^3.14.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
