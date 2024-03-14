@@ -36,10 +36,10 @@ RUN mkdir -p /app/
 COPY $SRC_PATH /app/
 WORKDIR /app
 
-ENV SERVICE_DEBUG=False
+ENV SERVICE_DEBUG=${DEBUG}
 ENV SERVICE_DB_PATH=/data
-ENV SERVICE_HOST="0.0.0.0"
-ENV SERVICE_PORT=8000
+ENV SERVICE_HOST=${HOSTS}
+ENV SERVICE_PORT=${PORT}
 
 # Run service
 CMD python manage.py migrate && gunicorn --workers=1 --bind $SERVICE_HOST:$SERVICE_PORT devops_demo.wsgi
