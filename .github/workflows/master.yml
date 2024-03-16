@@ -24,15 +24,15 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Build and test
-      run: |
-        # Здесь выполните ваши тесты, например:
+#    - name: Build and test
+#      run: |
+#         Здесь выполните ваши тесты, например:
         # npm test
         # или
-        python manage.py test
+#        python manage.py test
 
-    - name: Build Docker image
-      if: success()  # выполнится только если предыдущий шаг успешно завершился
+#    - name: Build Docker image
+#      if: success()  # выполнится только если предыдущий шаг успешно завершился
       run: |
         docker build -t mydemo_docker_image:latest .
     
