@@ -31,8 +31,8 @@ jobs:
         # или
 #        python manage.py test
 
-#    - name: Build Docker image
-#      if: success()  # выполнится только если предыдущий шаг успешно завершился
+    - name: Build Docker image
+      if: success()
       run: |
         docker build -t mydemo_docker_image:latest .
     
