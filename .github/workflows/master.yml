@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master  # измените в соответствии с вашей основной веткой
+  pull_request:
+    branches:
+      - master  # измените в соответствии с вашей основной веткой
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Build and test
+      run: |
+        # Здесь выполните ваши тесты, например:
+        # npm test
+        # или
+        python manage.py test
+
+    - name: Build Docker image
+      if: success()  # выполнится только если предыдущий шаг успешно завершился
+      run: |
+        docker build -t mydemo_docker_image:latest .
+    
+    - name: Push Docker image
+      if: success()  # выполнится только если предыдущий шаг успешно завершился
+      run: |
+        echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        docker push mydemo_docker_image:latest
