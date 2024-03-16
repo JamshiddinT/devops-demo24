@@ -34,10 +34,10 @@ jobs:
     - name: Build Docker image
       if: success()
       run: |
-        docker build -t mydemo_docker_image:latest .
+        docker build -t demo_devops:latest .
     
     - name: Push Docker image
       if: success()  # выполнится только если предыдущий шаг успешно завершился
       run: |
         echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-        docker push mydemo_docker_image:latest
+        docker push demo_devops:latest
